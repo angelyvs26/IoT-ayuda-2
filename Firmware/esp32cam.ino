@@ -14,32 +14,19 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// WIFI SETUP
+//-------------------- CONFIGURACIÓN (editar antes de subir) -----------------
+// Tu red Wi-Fi (debe ser 2.4 GHz)
+const char* WIFI_SSID     = "EDDA";
+const char* WIFI_PASSWORD = "daed1212";
 
-const char* WIFI_SSID     = "Angvs";
+// URL del backend (usamos HTTP para máximo rendimiento y bajo consumo en la cámara)
+const char* SERVER_URL = "http://smart-tourism.westcentralus.cloudapp.azure.com";
 
-const char* WIFI_PASSWORD = "kyni34172326";
-
-// IP de tu PC + puerto del backend (misma IP que MQTT_SERVER del ESP8266)
-
-const char* SERVER_URL = "http://192.168.94.1:3000";
-
-//-------------------- CONFIGURACIÓN (editar antes de subir) -----------------const char* WIFI_SSID     = "PAULPT 2.4Ghz";const char* WIFI_PASSWORD = "MATT5626";// IP de tu PC + puerto del backend (misma IP que MQTT_SERVER del ESP8266)const char* SERVER_URL = "http://192.168.100.39:3000";
-  // Configura la IP fija que deseas usar
-  //IPAddress local_IP(172, 20, 10, 5); 
-  // Configura la puerta de enlace (IP de tu router)
-  //IPAddress gateway(172, 20, 10, 1);
-  //IPAddress subnet(255, 255, 255, 240);
-
-
-const int SITIO_ID = 1;
-
-const char* CLIENT_ID = "esp32cam-sitio-1";
-
-
+// ID del sitio turístico (8 = Mirador Boquerón del Padre Abad)
+const int SITIO_ID = 8;
+const char* CLIENT_ID = "esp32cam-sitio-8";
 
 const unsigned long INTERVALO_MS = 250;  // ms entre frames (~4 fps)
-
 //------------------------------------------------------------------------------
 
 
@@ -193,41 +180,23 @@ void conectarWiFi() {
 
 
 // POST del frame JPEG; el backend valida X-Client-Id
-
 bool enviarFrame(camera_fb_t* fb) {
-
   HTTPClient http;
-
-  http.setTimeout(5000);
-
+  http.setTimeout(3000);
   http.begin(endpointUrl);
-
   http.addHeader("Content-Type", "image/jpeg");
-
   http.addHeader("X-Client-Id", CLIENT_ID);
-
-
 
   int httpCode = http.POST(fb->buf, fb->len);
 
-
-
   if (httpCode > 0 && httpCode < 300) {
-
     http.end();
-
     return true;
-
   }
 
-
-
   Serial.printf("Error HTTP: %d\n", httpCode);
-
   http.end();
-
   return false;
-
 }
 
 

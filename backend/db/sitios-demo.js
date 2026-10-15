@@ -2,8 +2,8 @@
 
 const SITIOS_DEMO = [
   {
-    nombre: 'Catarata de Ahuashiyacu',
-    ubicacion: 'Distrito de Río Tambo, Tingo María',
+    nombre: 'Cueva de las Pavas',
+    ubicacion: 'Distrito de Mariano Dámaso Beraún',
     aforo_maximo: 80,
     aforo_actual: 24,
     esp8266_client_id: 'esp8266-sitio-1',
