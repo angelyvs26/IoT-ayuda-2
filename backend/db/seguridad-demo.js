@@ -3,7 +3,7 @@
 const PASSWORD_DEMO = 'seg123';
 
 const SEGURIDAD_DEMO = [
-  { nombre: 'Seg. Cueva de las Pavas', email: 'seg.ahuashiyacu@iot.local', sitio_id: 1 },
+  { nombre: 'Seg. Cueva de las Pavas', email: 'seg.pavas@iot.local', sitio_id: 1 },
   { nombre: 'Seg. Cuevas de Toledo', email: 'seg.toledo@iot.local', sitio_id: 2 },
   { nombre: 'Seg. Jardín Botánico', email: 'seg.jardin@iot.local', sitio_id: 3 },
   { nombre: 'Seg. Cueva Lechuzas', email: 'seg.lechuzas@iot.local', sitio_id: 4 },
