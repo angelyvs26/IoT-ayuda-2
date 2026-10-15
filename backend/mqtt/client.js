@@ -20,7 +20,7 @@ function initMqtt(io) {
     // Topic esperado: aforo/{sitio_id}/{accion}
     const partes = topic.split('/');
     if (partes.length !== 3 || partes[0] !== 'aforo') return;
-
+    console.log(`topic: ${topic}, message: ${message}`);
     const sitioId = parseInt(partes[1], 10);
     const accion = partes[2];
     const valor = parseInt(message.toString(), 10);

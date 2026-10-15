@@ -52,7 +52,6 @@ export default function Home() {
         </span>
         <Link to="/login" className="btn-nav">Acceso personal</Link>
       </Header>
-
       <section className="hero hero-home">
         <div className="hero-bg-shape hero-bg-shape-1" />
         <div className="hero-bg-shape hero-bg-shape-2" />
